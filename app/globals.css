@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand Color System */
+    --primary-color: #245583;
+    --secondary-color: #F4F7FB;
+    --text-color: #333;
+    --heading-color: #245583;
+    --white: #fff;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    
+    /* Shadcn UI Variables - Updated to match brand */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 20%;
+    --card: 244 33% 97%;
+    --card-foreground: 0 0% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+    --primary: 210 60% 33%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 244 33% 97%;
+    --secondary-foreground: 0 0% 20%;
+    --muted: 244 33% 97%;
+    --muted-foreground: 0 0% 46%;
+    --accent: 244 33% 97%;
+    --accent-foreground: 0 0% 20%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 244 33% 91%;
+    --input: 244 33% 91%;
+    --ring: 210 60% 33%;
+    --radius: 8px;
+  }
+
+  .dark {
+    --background: 210 60% 10%;
+    --foreground: 0 0% 95%;
+    --card: 210 60% 15%;
+    --card-foreground: 0 0% 95%;
+    --popover: 210 60% 15%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 210 60% 50%;
+    --primary-foreground: 210 60% 10%;
+    --secondary: 210 60% 20%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 210 60% 20%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 210 60% 20%;
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 95%;
+    --border: 210 60% 20%;
+    --input: 210 60% 20%;
+    --ring: 210 60% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Custom Brand Styles */
+  .brand-primary {
+    color: var(--primary-color);
+  }
+  
+  .brand-bg-primary {
+    background-color: var(--primary-color);
+  }
+  
+  .brand-bg-secondary {
+    background-color: var(--secondary-color);
+  }
+  
+  .brand-text {
+    color: var(--text-color);
+  }
+  
+  .brand-heading {
+    color: var(--heading-color);
+  }
+  
+  .brand-shadow {
+    box-shadow: var(--box-shadow);
+  }
+  
+  .brand-radius {
+    border-radius: var(--border-radius);
+  }
+} 
