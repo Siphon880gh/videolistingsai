@@ -139,7 +139,7 @@ export default function HowItWorksPage() {
                     onPause={() => handleVideoPause('premium')}
                     onEnded={() => handleVideoPause('premium')}
                   >
-                    <source src="/videos/premium-3d-demo.mp4" type="video/mp4" />
+                    <source src="/videos/3d-premium-demo.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                   {/* 3D Overlay */}
@@ -297,7 +297,7 @@ export default function HowItWorksPage() {
 
                 {/* Action Buttons */}
                 <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3">
-                  <Link href="/login">
+                  <Link href="/pricing#diy">
                     <Button variant="outline" className="w-full" size="lg">
                       Try Free Trial
                     </Button>

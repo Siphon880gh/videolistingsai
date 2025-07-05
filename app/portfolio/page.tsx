@@ -18,42 +18,42 @@ const portfolioVideos = [
     title: "8899 Beverly Blvd #PHW, West Hollywood, CA",
     type: "3D Video",
     category: "3d",
-    src: "https://videolistings.ai/wp-content/uploads/8899-Beverly-Blvd-West-Hollywood-Final-compressed-.mp4",
+    src: "/videos/3d-8899-Beverly-Blvd-West-Hollywood-Final-compressed-.mp4",
     poster: "https://videolistings.ai/wp-content/uploads/8899-beverly-blvd-lead-image-layers-w-text-thumbnail.jpg"
   },
   {
     title: "395 Glenullen Dr., Pasadena, CA",
     type: "3D Video",
     category: "3d",
-    src: "https://videolistings.ai/wp-content/uploads/Sabatella-VLAi-395-Glenullen-Dr-Pasadena-desktop-w-logos.mp4",
+    src: "/videos/3d-Sabatella-VLAi-395-Glenullen-Dr-Pasadena-desktop-w-logos.mp4",
     poster: "https://videolistings.ai/wp-content/uploads/glenullen-pasadena-thumbnail-scaled.jpg"
   },
   {
     title: "820 Mission St. PH #208, Pasadena, CA 91030",
     type: "3D Video",
     category: "3d",
-    src: "https://videolistings.ai/wp-content/uploads/video-listings-the-agency-ai-mission-st-trk-1.mp4",
+    src: "/videos/3d-video-listings-the-agency-ai-mission-st-trk-1.mp4",
     poster: "https://videolistings.ai/wp-content/uploads/Screenshot-2025-03-15-at-9.42.38%E2%80%AFpm-scaled.jpg"
   },
   {
     title: "4263 Navajo St., Toluca Lake, CA 91602",
     type: "3D Video",
     category: "3d",
-    src: "https://videolistings.ai/wp-content/uploads/toluca-lake-final-horizontal.mp4",
+    src: "/videos/3d-toluca-lake-final-horizontal.mp4",
     poster: "https://videolistings.ai/wp-content/uploads/Screenshot-2025-03-15-at-9.39.07%E2%80%AFpm-scaled.jpg"
   },
   {
     title: "820 Mission St. PH #208, Pasadena, CA 91030 (Vertical)",
     type: "3D Video",
     category: "3d",
-    src: "https://videolistings.ai/wp-content/uploads/4263-navajo-st-toluca-lake-vertical.mp4",
+    src: "/videos/3d-4263-navajo-st-toluca-lake-vertical.mp4",
     poster: "https://videolistings.ai/wp-content/uploads/Screenshot-2025-06-17-at-6.59.42 pm.jpg"
   },
   {
     title: "One Solstice Lane, Malibu, CA",
     type: "3D Video",
     category: "3d",
-    src: "https://videolistings.ai/wp-content/uploads/Video-Listings-Ai-One-Solstice-Point-Malibu-Victoria-Lasso-handbrake-.mp4",
+    src: "3d-app-demo",
     poster: "https://videolistings.ai/wp-content/uploads/Video-Listings-Ai-One-Solstice-Lane-Mailibu-CA-featrued-video-image.jpg"
   },
   // Budget DIY Videos

@@ -43,17 +43,20 @@ export default function HomePage() {
             </div>
           </div>
           
-          {/* Hero Image Placeholder */}
+          {/* Hero Video Preview */}
           <div className="mt-12 max-w-5xl mx-auto">
-            <Image
-              src="https://placehold.co/1200x600/blue/white?text=Real+Estate+Video+Preview"
-              alt="placeholder"
-              width={1200}
-              height={600}
-              className="rounded-lg shadow-xl"
-              priority
-            />
-            {/* Conversion-focused image suggestion: Show a before/after of static photos vs dynamic video preview to highlight the transformation */}
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="rounded-lg shadow-xl w-full"
+              poster="/img/app-screenshot.png"
+            >
+              <source src="/videos/3d-premium-demo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            {/* Showcases the premium 3D video transformation in action */}
           </div>
         </div>
       </section>
@@ -139,45 +142,62 @@ export default function HomePage() {
                 <p className="text-gray-600">Prefer to do it yourself? Try our DIY video app</p>
               </div>
               
-              <Card className="max-w-2xl mx-auto">
+              <Card className="max-w-4xl mx-auto">
                 <CardHeader className="text-center">
                   <CardTitle className="text-xl text-gray-700">DIY Video App</CardTitle>
-                  <CardDescription>Create videos yourself with our easy-to-use tools</CardDescription>
+                  <CardDescription>Prefer our more economic do-it-yourself?<br/>Create videos yourself with our easy-to-use self-service app</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <CardContent className="space-y-6">
+                  {/* App Screenshot */}
+                  <div className="text-center">
+                    <Image
+                      src="/img/app-screenshot.png"
+                      alt="DIY VideoListings.ai app interface - create videos yourself"
+                      width={600}
+                      height={400}
+                      className="rounded-lg shadow-md mx-auto"
+                    />
+                    <p className="text-sm text-gray-600 mt-2 italic">The actual app interface you'll use to create videos yourself</p>
+                  </div>
+                  
+                  <div className="max-w-md mx-auto text-center">
                     <ul className="space-y-3">
-                      <li className="flex items-start">
-                        <svg className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <li className="flex items-center justify-center">
+                        <svg className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         Free trial - no credit card
                       </li>
-                      <li className="flex items-start">
-                        <svg className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <li className="flex items-center justify-center">
+                        <svg className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         $30/month: slideshow videos
                       </li>
-                    </ul>
-                    <ul className="space-y-3">
-                      <li className="flex items-start">
-                        <svg className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <li className="flex items-center justify-center">
+                        <svg className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         $65/month: add voice + ordering
                       </li>
-                      <li className="flex items-start">
-                        <svg className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <li className="flex items-center justify-center">
+                        <svg className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         $100/month: 10 re-edits
                       </li>
                     </ul>
+                    <div className="text-center mt-4">
+                      <Link href="/pricing">
+                        <Button variant="link" className="text-brand-primary">
+                          View Full Pricing Table
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                   <div className="text-center pt-4">
                     <Link href="/pricing#diy">
-                      <Button variant="outline" className="w-full sm:w-auto border-gray-400 text-gray-700">Start Free Trial</Button>
+                      <Button variant="outline" className="w-full sm:w-auto border-gray-400 text-gray-700">Try the App - Start Free Trial</Button>
                     </Link>
                   </div>
                 </CardContent>
@@ -198,16 +218,6 @@ export default function HomePage() {
               </blockquote>
               <cite className="text-lg text-gray-600">— Jamie S., Arizona Agent</cite>
               
-              <div className="mt-8">
-                <Image
-                  src="https://placehold.co/400x250/green/white?text=Agent+Success+Story"
-                  alt="placeholder"
-                  width={400}
-                  height={250}
-                  className="rounded-lg"
-                />
-                {/* Conversion-focused image suggestion: Photo of a successful agent or a property that sold quickly using the service */}
-              </div>
             </div>
 
             {/* Portfolio Preview */}
@@ -216,22 +226,12 @@ export default function HomePage() {
                 See What You Can Make
               </h2>
               <p className="text-lg text-gray-600 mb-6">
-                Watch videos made for real listings with our tools.
+                Watch videos made for real listings with our tools and services.
               </p>
               <Link href="/portfolio">
                 <Button size="lg">View Portfolio</Button>
               </Link>
               
-              <div className="mt-8">
-                <Image
-                  src="https://placehold.co/400x300/blue/white?text=Video+Portfolio+Preview"
-                  alt="placeholder"
-                  width={400}
-                  height={300}
-                  className="rounded-lg"
-                />
-                {/* Conversion-focused image suggestion: Thumbnail grid of actual video examples or a video player preview */}
-              </div>
             </div>
           </div>
         </div>
