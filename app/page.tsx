@@ -58,6 +58,7 @@ export default function HomePage() {
   const [imageModalOpen, setImageModalOpen] = useState(false);
   const [testimonialModalOpen, setTestimonialModalOpen] = useState(false);
   const [selectedTestimonial, setSelectedTestimonial] = useState(0);
+  const [isClient, setIsClient] = useState(false);
 
   const startAutoAdvance = () => {
     if (intervalId) clearInterval(intervalId);
@@ -94,12 +95,22 @@ export default function HomePage() {
     return text.substring(0, maxLength) + "...";
   };
 
+  // Mobile-responsive truncation
+  const getTruncatedText = (text: string, isMobile: boolean = false) => {
+    const maxLength = isMobile ? 80 : 60; // More characters on mobile for better readability
+    return truncateText(text, maxLength);
+  };
+
   useEffect(() => {
     startAutoAdvance();
     return () => {
       if (intervalId) clearInterval(intervalId);
     };
   }, [testimonials.length]);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <div className="flex flex-col">
@@ -190,17 +201,26 @@ export default function HomePage() {
             {/* Hero Video Preview */}
             <div className="w-full max-w-none lg:col-span-3 group">
               <div className="relative">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  controls
-                  className="rounded-lg shadow-xl w-full h-auto min-h-[400px] lg:min-h-[500px] object-cover [&::-webkit-media-controls]:opacity-0 [&::-webkit-media-controls]:transition-opacity [&::-webkit-media-controls]:duration-300 hover:[&::-webkit-media-controls]:opacity-100 group-hover:[&::-webkit-media-controls]:opacity-100"
-                >
-                  <source src="/videos/3d-premium-demo.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                {isClient ? (
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls
+                    className="rounded-lg shadow-xl w-full h-auto min-h-[400px] lg:min-h-[500px] object-cover [&::-webkit-media-controls]:opacity-0 [&::-webkit-media-controls]:transition-opacity [&::-webkit-media-controls]:duration-300 hover:[&::-webkit-media-controls]:opacity-100 group-hover:[&::-webkit-media-controls]:opacity-100"
+                  >
+                    <source src="/videos/3d-premium-demo.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
+                  <div className="rounded-lg shadow-xl w-full h-auto min-h-[400px] lg:min-h-[500px] bg-gray-200 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-primary mx-auto mb-4"></div>
+                      <p className="text-gray-600">Loading video...</p>
+                    </div>
+                  </div>
+                )}
                 {/* Video Caption */}
                 {isCaptionVisible && (
                   <div className={`absolute top-4 bg-black bg-opacity-75 text-white p-3 rounded-lg transition-all duration-300 ease-in-out ${
@@ -436,40 +456,35 @@ export default function HomePage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               {/* Testimonial Carousel */}
               <div className="text-center lg:text-left">
-                <div className="relative min-h-32 overflow-hidden">
+                <div className="relative min-h-[200px] sm:min-h-[160px] w-full">
                   {/* Expand Icon */}
+                  {(testimonials[currentTestimonial]?.quote?.length || 0) > 2 && (
                   <button
                     onClick={() => handleTestimonialClick(currentTestimonial)}
-                    className="opacity-90 absolute top-2 right-2 z-10 bg-white rounded-full p-2 shadow-md hover:shadow-lg transition-shadow duration-200 group"
+                    className="opacity-90 absolute top-0 right-0 z-10 rounded-full p-2 group"
                     aria-label="Read full testimonial"
                   >
                     <svg className="w-4 h-4 text-gray-600 group-hover:text-brand-primary transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
                     </svg>
                   </button>
-                  <div 
-                    className="flex transition-transform duration-500 ease-in-out"
-                    style={{ 
-                      transform: `translateX(-${currentTestimonial * 100}%)`,
-                      width: `${testimonials.length * 100}%`
-                    }}
-                  >
-                    {testimonials.map((testimonial, index) => (
-                      <div key={index} className="w-full flex-shrink-0 min-h-32 flex flex-col justify-start">
-                        <blockquote 
-                          className="text-2xl sm:text-3xl font-medium text-gray-900 mb-4 cursor-pointer hover:text-brand-primary transition-colors duration-200"
-                          onClick={() => handleTestimonialClick(index)}
-                        >
-                          "{truncateText(testimonial.quote, 50)}"
-                        </blockquote>
-                        <cite className="text-lg text-gray-600">— {testimonial.author}</cite>
-                        {testimonial.quote.length > 50 && (
-                          <p className="text-sm text-brand-primary mt-2 cursor-pointer hover:underline" onClick={() => handleTestimonialClick(index)}>
-                            Click to read full testimonial
-                          </p>
-                        )}
-                      </div>
-                    ))}
+                  )}                  
+                  {/* Display Current Testimonial */}
+                  <div className="px-2 py-4">
+                    <blockquote 
+                      className="text-xl sm:text-2xl lg:text-3xl font-medium text-gray-900 mb-4 cursor-pointer hover:text-brand-primary transition-colors duration-200 leading-relaxed"
+                      onClick={() => handleTestimonialClick(currentTestimonial)}
+                    >
+                      "{getTruncatedText(testimonials[currentTestimonial]?.quote || '', true)}"
+                    </blockquote>
+                    <cite className="text-base sm:text-lg text-gray-600">
+                      — {testimonials[currentTestimonial]?.author || ''}
+                    </cite>
+                    {/* {(testimonials[currentTestimonial]?.quote?.length || 0) > 80 && (
+                      <p className="text-sm text-brand-primary mt-2 cursor-pointer hover:underline" onClick={() => handleTestimonialClick(currentTestimonial)}>
+                        Click to read full testimonial
+                      </p>
+                    )} */}
                   </div>
                 </div>
                 
@@ -534,7 +549,7 @@ export default function HomePage() {
         >
           <div className="relative bg-white p-8 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-auto">
             <button
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10 bg-white rounded-full p-2 shadow-md"
+              className="absolute top-0 right-0 text-gray-500 hover:text-gray-700 z-10 p-2"
               onClick={() => setTestimonialModalOpen(false)}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
