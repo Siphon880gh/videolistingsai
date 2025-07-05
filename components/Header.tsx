@@ -24,8 +24,8 @@ export default function Header() {
     <>
       {/* Navigation Header */}
       <header className="border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50 brand-shadow">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16 mx-auto">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2">
               <img 
@@ -38,7 +38,7 @@ export default function Header() {
             
             {/* Navigation Links */}
             <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/quote" className="text-sm font-medium text-yellow-600 hover:text-yellow-700 transition-colors">
+              <Link href="/quote" className="text-sm font-medium text-yellow-600 hover:text-yellow-700 transition-colors ml-4">
                 Get Quote
               </Link>
               <Link href="/portfolio" className="text-sm font-medium brand-text hover:brand-primary transition-colors">
@@ -110,77 +110,72 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div className={`md:hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border-b transition-all duration-300 ${isMobileMenuOpen ? 'fixed top-16 left-0 right-0 max-h-screen opacity-100 z-40' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <nav className="max-w-sm mx-auto space-y-5">
-            <Link 
-              href="/quote" 
-              className="block text-center text-lg font-medium text-yellow-600 hover:text-yellow-700 transition-colors py-2 px-4 rounded-lg hover:bg-white/50"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Get Quote
-            </Link>
-            <Link 
-              href="/portfolio" 
-              className="block text-center text-lg font-medium brand-text hover:brand-primary transition-colors py-2 px-4 rounded-lg hover:bg-white/50"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Portfolio
-            </Link>
-            <Link 
-              href="/how-it-works" 
-              className="block text-center text-lg font-medium brand-text hover:brand-primary transition-colors py-2 px-4 rounded-lg hover:bg-white/50"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              How It Works
-            </Link>
-            <Link 
-              href="/faq" 
-              className="block text-center text-lg font-medium brand-text hover:brand-primary transition-colors py-2 px-4 rounded-lg hover:bg-white/50"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              FAQ
-            </Link>
-            <Link 
-              href="/contact" 
-              className="block text-center text-lg font-medium brand-text hover:brand-primary transition-colors py-2 px-4 rounded-lg hover:bg-white/50"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Contact
-            </Link>
-            
-            {/* DIY Plans Section */}
-            <div className="pt-6 border-t border-white/30">
-              <div className="mb-4 text-center">
-                <h3 className="text-sm font-bold text-gray-600 uppercase tracking-wider bg-white/40 inline-block px-4 py-2 rounded-full">
-                  DIY Plans
-                </h3>
+        <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
+          <div className="max-w-7xl mx-auto">
+            <nav className="max-w-sm mx-auto space-y-5">
+              <Link 
+                href="/quote" 
+                className="block text-center text-lg font-medium text-yellow-600 hover:text-yellow-700 transition-colors py-2 px-4 rounded-lg hover:bg-white/50"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Get Quote
+              </Link>
+              <Link 
+                href="/portfolio" 
+                className="block text-center text-lg font-medium brand-text hover:brand-primary transition-colors py-2 px-4 rounded-lg hover:bg-white/50"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Portfolio
+              </Link>
+              <Link 
+                href="/how-it-works" 
+                className="block text-center text-lg font-medium brand-text hover:brand-primary transition-colors py-2 px-4 rounded-lg hover:bg-white/50"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                How It Works
+              </Link>
+              <Link 
+                href="/faq" 
+                className="block text-center text-lg font-medium brand-text hover:brand-primary transition-colors py-2 px-4 rounded-lg hover:bg-white/50"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                FAQ
+              </Link>
+              <Link 
+                href="/contact" 
+                className="block text-center text-lg font-medium brand-text hover:brand-primary transition-colors py-2 px-4 rounded-lg hover:bg-white/50"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Contact
+              </Link>
+              
+              {/* DIY Plans Section */}
+              <div className="pt-6 border-t border-white/30">
+                <div className="mb-4 text-center">
+                  <h3 className="text-sm font-bold text-gray-600 uppercase tracking-wider bg-white/40 inline-block px-4 py-2 rounded-full">
+                    DIY Plans
+                  </h3>
+                </div>
+                <div className="space-y-3">
+                  <Link 
+                    href="/pricing" 
+                    className="block text-center text-lg font-medium brand-text hover:brand-primary transition-colors py-2 px-4 rounded-lg hover:bg-white/50"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Pricing Plans
+                  </Link>
+                  <a 
+                    href="https://app.videolistings.ai" 
+                    target="_blank"
+                    className="block text-center text-lg font-medium brand-text hover:brand-primary transition-colors py-2 px-4 rounded-lg hover:bg-white/50"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    App Login
+                  </a>
+                </div>
               </div>
-              <div className="space-y-3">
-                <Link 
-                  href="/pricing" 
-                  className="block text-center text-lg font-medium brand-text hover:brand-primary transition-colors py-2 px-4 rounded-lg hover:bg-white/50"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Pricing Plans
-                </Link>
-                {/* <Link 
-                  href="/login" 
-                  className="block text-center text-lg font-medium brand-text hover:brand-primary transition-colors py-2 px-4 rounded-lg hover:bg-white/50"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  App Login
-                </Link> */}
-                <a 
-                  href="https://app.videolistings.ai" 
-                  target="_blank"
-                  className="block text-center text-lg font-medium brand-text hover:brand-primary transition-colors py-2 px-4 rounded-lg hover:bg-white/50"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  App Login
-                </a>
-              </div>
-            </div>
-          </nav>
+            </nav>
+          </div>
         </div>
       </div>
     </>

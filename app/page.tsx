@@ -55,6 +55,7 @@ export default function HomePage() {
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
   const [isCaptionVisible, setIsCaptionVisible] = useState(true);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [imageModalOpen, setImageModalOpen] = useState(false);
 
   const startAutoAdvance = () => {
     if (intervalId) clearInterval(intervalId);
@@ -190,8 +191,8 @@ export default function HomePage() {
                 </video>
                 {/* Video Caption */}
                 {isCaptionVisible && (
-                  <div className={`absolute top-4 left-4 right-4 bg-black bg-opacity-75 text-white p-3 rounded-lg transition-all duration-300 ease-in-out ${
-                    isAnimating ? 'transform scale-0 translate-x-full opacity-0' : 'transform scale-100 translate-x-0 opacity-100'
+                  <div className={`absolute top-4 bg-black bg-opacity-75 text-white p-3 rounded-lg transition-all duration-300 ease-in-out ${
+                    isAnimating ? 'right-4 opacity-0' : 'left-4 right-4 opacity-100'
                   }`}>
                     <div className="flex items-center justify-between">
                       <p className="text-sm font-medium">Before: Static listing photos → After: Professional 3D video tour</p>
@@ -298,7 +299,7 @@ export default function HomePage() {
                         <svg className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        3 revisions included
+                        Revisions included
                       </li>
                       <li className="flex items-start">
                         <svg className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -309,7 +310,7 @@ export default function HomePage() {
                     </ul>
                   </div>
                   <div className="text-center pt-4">
-                    <Link href="/pricing#premium">
+                    <Link href="/quote">
                       <Button size="lg" className="w-full sm:w-auto brand-bg-primary text-white">Get Premium Service</Button>
                     </Link>
                   </div>
@@ -337,10 +338,37 @@ export default function HomePage() {
                       alt="DIY VideoListings.ai app interface - create videos yourself"
                       width={600}
                       height={400}
-                      className="rounded-lg shadow-md mx-auto"
+                      className="rounded-lg shadow-md mx-auto cursor-pointer hover:opacity-90 transition-opacity"
+                      onClick={() => setImageModalOpen(true)}
                     />
                     <p className="text-sm text-gray-600 mt-2 italic">The actual app interface you'll use to create videos yourself</p>
                   </div>
+
+                  {/* Modal */}
+                  {imageModalOpen && (
+                    <div 
+                      className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4"
+                      onClick={() => setImageModalOpen(false)}
+                    >
+                      <div className="relative bg-white p-4 rounded-lg max-w-6xl w-full max-h-[90vh] overflow-auto">
+                        <button
+                          className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 z-10 bg-white rounded-full p-1 shadow-md"
+                          onClick={() => setImageModalOpen(false)}
+                        >
+                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                        <Image
+                          src="/img/app-screenshot.png"
+                          alt="DIY VideoListings.ai app interface - create videos yourself"
+                          width={1200}
+                          height={800}
+                          className="rounded-lg w-full h-auto"
+                        />
+                      </div>
+                    </div>
+                  )}
                   
                   <div className="max-w-md mx-auto text-center">
                     <ul className="space-y-3">
@@ -360,27 +388,27 @@ export default function HomePage() {
                         <svg className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        $65/month: add voice + ordering
+                        $65/month: add voice + keep videos
                       </li>
                       <li className="flex items-center justify-center">
                         <svg className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        $100/month: 10 re-edits
+                        $100/month: AI reorder photos + 3 re-edits
                       </li>
                     </ul>
-                    <div className="text-center mt-4">
+                    <div className="text-center mt-6">
                       <Link href="/pricing">
                         <Button variant="link" className="text-brand-primary">
                           View Full Pricing Table
                         </Button>
                       </Link>
                     </div>
-                  </div>
-                  <div className="text-center pt-4">
-                    <Link href="/pricing#diy">
-                      <Button variant="outline" className="w-full sm:w-auto border-gray-400 text-gray-700">Try the App - Start Free Trial</Button>
-                    </Link>
+                    <div className="text-center pt-1">
+                      <Link href="/pricing#diy">
+                        <Button variant="outline" className="w-full sm:w-auto border-gray-400 text-gray-700">Try the App - Start Free Trial</Button>
+                      </Link>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -390,57 +418,59 @@ export default function HomePage() {
       </section>
 
       {/* Featured Content Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-start">
-            {/* Testimonial Carousel */}
-            <div className="text-center lg:text-left">
-              <div className="relative h-32 overflow-hidden">
-                <div 
-                  className="flex transition-transform duration-500 ease-in-out"
-                  style={{ 
-                    transform: `translateX(-${currentTestimonial * 100}%)`,
-                    width: `${testimonials.length * 100}%`
-                  }}
-                >
-                  {testimonials.map((testimonial, index) => (
-                    <div key={index} className="w-full flex-shrink-0 h-32 flex flex-col justify-center">
-                      <blockquote className="text-2xl sm:text-3xl font-medium text-gray-900 mb-4">
-                        "{testimonial.quote}"
-                      </blockquote>
-                      <cite className="text-lg text-gray-600">— {testimonial.author}</cite>
-                    </div>
+          <div className="bg-white rounded-lg shadow-sm p-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              {/* Testimonial Carousel */}
+              <div className="text-center lg:text-left">
+                <div className="relative min-h-32 overflow-hidden">
+                  <div 
+                    className="flex transition-transform duration-500 ease-in-out"
+                    style={{ 
+                      transform: `translateX(-${currentTestimonial * 100}%)`,
+                      width: `${testimonials.length * 100}%`
+                    }}
+                  >
+                    {testimonials.map((testimonial, index) => (
+                      <div key={index} className="w-full flex-shrink-0 min-h-32 flex flex-col justify-start">
+                        <blockquote className="text-2xl sm:text-3xl font-medium text-gray-900 mb-4">
+                          "{testimonial.quote}"
+                        </blockquote>
+                        <cite className="text-lg text-gray-600">— {testimonial.author}</cite>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Carousel Indicators */}
+                <div className="flex justify-center lg:justify-start mt-4 space-x-2">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleManualNavigation(index)}
+                      className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                        index === currentTestimonial ? 'bg-blue-500' : 'bg-gray-300'
+                      }`}
+                      aria-label={`Go to testimonial ${index + 1}`}
+                    />
                   ))}
                 </div>
               </div>
-              
-              {/* Carousel Indicators */}
-              <div className="flex justify-center lg:justify-start mt-4 space-x-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleManualNavigation(index)}
-                    className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                      index === currentTestimonial ? 'bg-blue-500' : 'bg-gray-300'
-                    }`}
-                    aria-label={`Go to testimonial ${index + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
 
-            {/* Portfolio Preview */}
-            <div className="text-center lg:text-left">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                See What You Can Make
-              </h2>
-              <p className="text-lg text-gray-600 mb-6">
-                Watch videos made for real listings with our tools and services.
-              </p>
-              <Link href="/portfolio">
-                <Button size="lg">View Portfolio</Button>
-              </Link>
-              
+              {/* Portfolio Preview */}
+              <div className="text-center lg:text-left">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                  See What You Can Make
+                </h2>
+                <p className="text-lg text-gray-600 mb-6">
+                  Watch videos made for real listings with our tools and services.
+                </p>
+                <Link href="/portfolio">
+                  <Button size="lg">View Portfolio</Button>
+                </Link>
+                
+              </div>
             </div>
           </div>
         </div>
