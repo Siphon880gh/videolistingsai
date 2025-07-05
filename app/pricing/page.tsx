@@ -1,15 +1,14 @@
-import type { Metadata } from "next"
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
-export const metadata: Metadata = {
-  title: "Pricing | VideoListings.ai",
-  description: "Choose the right plan: Premium 3D video or DIY video app with voice and AI photo sorting.",
-}
-
 export default function PricingPage() {
+  const [imageModalOpen, setImageModalOpen] = useState(false)
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -234,13 +233,42 @@ export default function PricingPage() {
             
             <div className="bg-white rounded-lg shadow-lg p-8 max-w-md mx-auto">
               <div className="mb-6">
-                <Image
-                  src="https://placehold.co/300x200/blue/white?text=Free+Trial+Preview"
-                  alt="placeholder"
-                  width={300}
-                  height={200}
-                  className="rounded-lg mx-auto"
-                />
+                <div className="relative">
+                  <Image
+                    src="/img/app-screenshot.png"
+                    alt="DIY video app demo" 
+                    width={300}
+                    height={200}
+                    className="rounded-lg mx-auto cursor-pointer hover:opacity-90 transition-opacity"
+                    onClick={() => setImageModalOpen(true)}
+                  />
+
+                  {/* Modal */}
+                  {imageModalOpen && (
+                    <div 
+                      className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4"
+                      onClick={() => setImageModalOpen(false)}
+                    >
+                      <div className="relative bg-white p-4 rounded-lg max-w-6xl w-full max-h-[90vh] overflow-auto">
+                        <button
+                          className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 z-10 bg-white rounded-full p-1 shadow-md"
+                          onClick={() => setImageModalOpen(false)}
+                        >
+                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                        <Image
+                          src="/img/app-screenshot.png"
+                          alt="DIY video app demo"
+                          width={1200}
+                          height={800}
+                          className="rounded-lg w-full h-auto"
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
                 {/* Conversion-focused image suggestion: Screenshot of the free trial signup process or sample video creation interface */}
               </div>
               
@@ -266,9 +294,11 @@ export default function PricingPage() {
                 </li>
               </ul>
               
-              <Button size="lg" className="w-full">
-                Start Free Trial
-              </Button>
+              <Link href="/login">
+                <Button size="lg" className="w-full">
+                  Start Free Trial
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -290,11 +320,11 @@ export default function PricingPage() {
                   Unsure? Try DIY Free Trial (non-3D)
                 </Button>
               </Link>
-                             <Link href="/quote">
-                 <Button size="lg" className="w-full sm:w-auto bg-white text-primary font-bold hover:bg-white/90 hover:text-primary border-2 border-white shadow-lg">
-                   Get Premium 3D - Get Quote
-                 </Button>
-               </Link>
+              <Link href="/quote">
+                <Button size="lg" className="w-full sm:w-auto bg-white text-primary font-bold hover:bg-white/90 hover:text-primary border-2 border-white shadow-lg">
+                  Get Premium 3D - Get Quote
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

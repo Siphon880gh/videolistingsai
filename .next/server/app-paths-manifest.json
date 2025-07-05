@@ -1,6 +1,10 @@
 {
-  "/not-found": "app/not-found.js",
-  "/how-it-works/page": "app/how-it-works/page.js",
+  "/pricing/page": "app/pricing/page.js",
   "/portfolio/page": "app/portfolio/page.js",
+  "/login/page": "app/login/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/faq/page": "app/faq/page.js",
+  "/how-it-works/page": "app/how-it-works/page.js",
+  "/quote/page": "app/quote/page.js",
   "/page": "app/page.js"
 }
