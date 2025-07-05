@@ -154,7 +154,7 @@ export default function HowItWorksPage() {
                         onClick={() => setShowPremiumTooltip(!showPremiumTooltip)}
                         onTouchStart={() => setShowPremiumTooltip(!showPremiumTooltip)}
                       >
-                        3D
+                        3D Video
                       </div>
                       {/* Tooltip */}
                       {showPremiumTooltip && (
@@ -283,7 +283,7 @@ export default function HowItWorksPage() {
                       {/* Tooltip */}
                       {showBudgetTooltip && (
                         <div className="absolute top-full right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-xl p-3 z-10 animate-in slide-in-from-top-2 duration-200">
-                          <div className="text-sm text-gray-800 font-medium mb-1">Budget DIY Tool</div>
+                          <div className="text-sm text-gray-800 font-medium mb-1">Budget DIY Presentation Video</div>
                           <div className="text-xs text-gray-600">
                             Create videos instantly with automated effects (zoom and pan's that pass as realistic) and end card designer. Perfect for budget-conscious agents who want quick, professional results without 3D parallax depth effects.
                           </div>
@@ -322,7 +322,7 @@ export default function HowItWorksPage() {
               Start Today
             </h2>
             <p className="text-lg mb-8 opacity-90">
-              Choose your path: try our budget-friendly DIY tool or get a custom premium 3D video.
+              Choose your path: try our budget-friendly DIY presentation video or get a custom premium 3D video.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing">

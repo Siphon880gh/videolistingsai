@@ -1,66 +1,116 @@
+"use client"
+
+import { useState } from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
-export const metadata: Metadata = {
-  title: "Video Portfolio | VideoListings.ai",
-  description: "See sample real estate listing videos made with our 3D video service and DIY app.",
-}
+// Note: Metadata export removed since this is now a client component
+// export const metadata: Metadata = {
+//   title: "Video Portfolio | VideoListings.ai",
+//   description: "See sample real estate listing videos made with our 3D video service and DIY app.",
+// }
 
 const portfolioVideos = [
   {
     title: "8899 Beverly Blvd #PHW, West Hollywood, CA",
     type: "3D Video",
+    category: "3d",
     src: "https://videolistings.ai/wp-content/uploads/8899-Beverly-Blvd-West-Hollywood-Final-compressed-.mp4",
     poster: "https://videolistings.ai/wp-content/uploads/8899-beverly-blvd-lead-image-layers-w-text-thumbnail.jpg"
   },
   {
     title: "395 Glenullen Dr., Pasadena, CA",
-    type: "3D Video", 
+    type: "3D Video",
+    category: "3d",
     src: "https://videolistings.ai/wp-content/uploads/Sabatella-VLAi-395-Glenullen-Dr-Pasadena-desktop-w-logos.mp4",
     poster: "https://videolistings.ai/wp-content/uploads/glenullen-pasadena-thumbnail-scaled.jpg"
   },
   {
-    title: "One Solstice Lane, Malibu, CA",
-    type: "3D Video",
-    src: "https://videolistings.ai/wp-content/uploads/Video-Listings-Ai-One-Solstice-Point-Malibu-Victoria-Lasso-handbrake-.mp4",
-    poster: "https://videolistings.ai/wp-content/uploads/Video-Listings-Ai-One-Solstice-Lane-Mailibu-CA-featrued-video-image.jpg"
-  },
-  {
     title: "820 Mission St. PH #208, Pasadena, CA 91030",
     type: "3D Video",
+    category: "3d",
     src: "https://videolistings.ai/wp-content/uploads/video-listings-the-agency-ai-mission-st-trk-1.mp4",
     poster: "https://videolistings.ai/wp-content/uploads/Screenshot-2025-03-15-at-9.42.38%E2%80%AFpm-scaled.jpg"
   },
   {
     title: "4263 Navajo St., Toluca Lake, CA 91602",
     type: "3D Video",
+    category: "3d",
     src: "https://videolistings.ai/wp-content/uploads/toluca-lake-final-horizontal.mp4",
     poster: "https://videolistings.ai/wp-content/uploads/Screenshot-2025-03-15-at-9.39.07%E2%80%AFpm-scaled.jpg"
   },
   {
-    title: "151 Kellis Pond Lane, Watermill, NY 11932",
+    title: "820 Mission St. PH #208, Pasadena, CA 91030 (Vertical)",
     type: "3D Video",
-    src: "",
-    poster: "https://videolistings.ai/wp-content/uploads/Screenshot-2025-06-17-at-6.59.42%E2%80%AFpm.jpg"
+    category: "3d",
+    src: "https://videolistings.ai/wp-content/uploads/4263-navajo-st-toluca-lake-vertical.mp4",
+    poster: "https://videolistings.ai/wp-content/uploads/Screenshot-2025-06-17-at-6.59.42 pm.jpg"
   },
   {
-    title: "211 S Muirfield Rd, Hancock Park, CA 90004",
+    title: "One Solstice Lane, Malibu, CA",
     type: "3D Video",
-    src: "",
-    poster: "https://videolistings.ai/wp-content/uploads/Screenshot-2025-03-17-at-8.19.22%E2%80%AFpm.jpg"
+    category: "3d",
+    src: "https://videolistings.ai/wp-content/uploads/Video-Listings-Ai-One-Solstice-Point-Malibu-Victoria-Lasso-handbrake-.mp4",
+    poster: "https://videolistings.ai/wp-content/uploads/Video-Listings-Ai-One-Solstice-Lane-Mailibu-CA-featrued-video-image.jpg"
+  },
+  // Budget DIY Videos
+  {
+    title: "One Solstice Lane, Malibu, CA",
+    type: "Budget DIY",
+    category: "budget",
+    src: "/videos/diy-muxed-aSW-VLAI-c76-673eb6bf48c77420d743190e.mp4",
+    poster: ""
   },
   {
-    title: "4263 Navajo St., Toluca Lake, CA 91602 (Vertical)",
-    type: "3D Video",
-    src: "",
-    poster: "https://videolistings.ai/wp-content/uploads/Screenshot-2025-03-17-at-3.37.42%E2%80%AFpm-scaled.jpg"
+    title: "61 Palm Hill Lane, Branbury CA (Endcard)",
+    type: "Budget DIY",
+    category: "budget",
+    src: "/videos/diy-muxed-aSW-VLAI-c6-679c54fc7edb73366fa4b341.mp4",
+    poster: ""
+  },
+  {
+    title: "2341 Wilson Ave, Venice (Endcard Black background, Two agents, 1 pic)",
+    type: "Budget DIY",
+    category: "budget",
+    src: "/videos/diy-muxed-aSW-VLAI-c41-673eb6bf48c77420d743190e.mp4",
+    poster: ""
+  },
+  {
+    title: "5220 Medina Rd, Woodland Hills (Endcard Two agents, No pic)",
+    type: "Budget DIY",
+    category: "budget",
+    src: "/videos/diy-muxed-aSW-VLAI-c67-673eb6bf48c77420d743190e.mp4",
+    poster: ""
+  },
+  {
+    title: "2106 Glencoe Ave, Venice (Watermarked)",
+    type: "Budget DIY",
+    category: "budget",
+    src: "/videos/diy-muxed-aSW-VLAI-c61-673eb6bf48c77420d743190e.mp4",
+    poster: ""
+  },
+  {
+    title: "2060 Cross Gate Blvd. #204, Surfside Beach, SC 29575 (No endcard)",
+    type: "Budget DIY",
+    category: "budget",
+    src: "/videos/diy-muxed-aSW-VLAI-c1-678c0579bb08fe22892dd994.mp4",
+    poster: ""
   }
 ]
 
 export default function PortfolioPage() {
+  const [show3DVideos, setShow3DVideos] = useState(true)
+  const [showBudgetVideos, setShowBudgetVideos] = useState(true)
+
+  const filteredVideos = portfolioVideos.filter(video => {
+    if (video.category === "3d" && !show3DVideos) return false
+    if (video.category === "budget" && !showBudgetVideos) return false
+    return true
+  })
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -77,59 +127,140 @@ export default function PortfolioPage() {
         </div>
       </section>
 
+      {/* Filter Section */}
+      <section className="py-8 bg-gray-50 border-b">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+              Filter by Video Type
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* 3D Video Filter */}
+              <div className="space-y-3 cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setShow3DVideos(!show3DVideos);
+                }}
+              >
+                <label className="flex items-center space-x-3">
+                  <input
+                    type="checkbox"
+                    checked={show3DVideos}
+                    onChange={(e) => { e.stopPropagation(); setShow3DVideos(e.target.checked); }}
+                    className="w-5 h-5 text-primary border-gray-300 rounded focus:ring-primary focus:ring-2"
+                  />
+                  <span className="text-lg font-semibold text-gray-900">Premium 3D Videos</span>
+                </label>
+                <p className="text-sm text-gray-600 ml-8">
+                  Professional video with 3D motion and parallax depth effects (makes the zooms look realistic), bespoke transitions, a branded end card, and dynamic effects like drifting leaves and flickering flames—enhanced by our expert creative team.
+                </p>
+              </div>
+
+              {/* Budget Video Filter */}
+              <div className="space-y-3 cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setShowBudgetVideos(!showBudgetVideos);
+                }}
+              >
+                <label className="flex items-center space-x-3">
+                  <input
+                    type="checkbox"
+                    checked={showBudgetVideos}
+                    onChange={(e) => { e.stopPropagation(); setShowBudgetVideos(e.target.checked); }}
+                    className="w-5 h-5 text-primary border-gray-300 rounded focus:ring-primary focus:ring-2"
+                  />
+                  <span className="text-lg font-semibold text-gray-900">Budget DIY Presentation Videos</span>
+                </label>
+                <p className="text-sm text-gray-600 ml-8">
+                  Create videos instantly with automated effects (zoom and pan's that pass as realistic) and end card designer. Perfect for budget-conscious agents who want quick, professional results without 3D parallax depth effects.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Video Gallery */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {portfolioVideos.map((video, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="relative">
-                  {video.src ? (
-                    <video 
-                      className="w-full h-64 object-cover"
-                      poster={video.poster}
-                      controls
-                      preload="metadata"
-                    >
-                      <source src={video.src} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  ) : (
-                    <div className="relative">
-                      <Image
-                        src={video.poster}
-                        alt={video.title}
-                        width={400}
-                        height={256}
+          {filteredVideos.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+              {filteredVideos.map((video, index) => (
+                <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
+                  <div className="relative">
+                    {video.src ? (
+                      <video 
                         className="w-full h-64 object-cover"
-                      />
-                      <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
-                        <div className="bg-white bg-opacity-90 rounded-full p-4">
-                          <svg className="h-8 w-8 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                          </svg>
+                        poster={video.poster || undefined}
+                        controls
+                        preload="metadata"
+                      >
+                        <source src={video.src} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : (
+                      <div className="relative">
+                        {video.poster ? (
+                          <Image
+                            src={video.poster}
+                            alt={video.title}
+                            width={400}
+                            height={256}
+                            className="w-full h-64 object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
+                            <svg className="h-16 w-16 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                        )}
+                        <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                          <div className="bg-white bg-opacity-90 rounded-full p-4">
+                            <svg className="h-8 w-8 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                            </svg>
+                          </div>
                         </div>
                       </div>
+                    )}
+                    
+                    {/* Video Type Badge */}
+                    <div className="absolute top-3 right-3">
+                      <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                        video.category === "3d" 
+                          ? "bg-primary text-primary-foreground" 
+                          : "bg-secondary text-secondary-foreground"
+                      }`}>
+                        {video.type}
+                      </span>
                     </div>
-                  )}
-                  
-                  {/* Video Type Badge */}
-                  <div className="absolute top-3 right-3">
-                    <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
-                      {video.type}
-                    </span>
                   </div>
-                </div>
-                
-                <CardHeader>
-                  <CardTitle className="text-lg leading-tight">{video.title}</CardTitle>
-                  <CardDescription>
-                    Premium 3D video with cinematic effects and professional narration
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
+                  
+                  <CardHeader>
+                    <CardTitle className="text-lg leading-tight">{video.title}</CardTitle>
+                    <CardDescription>
+                      {video.category === "3d" 
+                        ? "Premium 3D video with cinematic effects and professional narration"
+                        : "Budget-friendly video with automated effects and instant results"
+                      }
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <div className="text-gray-500">
+                <svg className="h-24 w-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">No videos match your filters</h3>
+                <p className="text-gray-600">Try selecting different video types above to see our portfolio.</p>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
