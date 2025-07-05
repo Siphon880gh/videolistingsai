@@ -56,6 +56,8 @@ export default function HomePage() {
   const [isCaptionVisible, setIsCaptionVisible] = useState(true);
   const [isAnimating, setIsAnimating] = useState(false);
   const [imageModalOpen, setImageModalOpen] = useState(false);
+  const [testimonialModalOpen, setTestimonialModalOpen] = useState(false);
+  const [selectedTestimonial, setSelectedTestimonial] = useState(0);
 
   const startAutoAdvance = () => {
     if (intervalId) clearInterval(intervalId);
@@ -82,6 +84,16 @@ export default function HomePage() {
     }, 300); // Match the animation duration
   };
 
+  const handleTestimonialClick = (index: number) => {
+    setSelectedTestimonial(index);
+    setTestimonialModalOpen(true);
+  };
+
+  const truncateText = (text: string, maxLength: number) => {
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength) + "...";
+  };
+
   useEffect(() => {
     startAutoAdvance();
     return () => {
@@ -105,7 +117,7 @@ export default function HomePage() {
               <div className="space-y-6">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold brand-heading mb-6 leading-tight">
                   Turn Your Listing Photos Into
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 pb-2 leading-normal">
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-blue-500 pb-2 leading-normal">
                     Professional Videos
                   </span>
                 </h1>
@@ -155,7 +167,7 @@ export default function HomePage() {
                     <Button 
                       variant="outline" 
                       size="lg" 
-                      className="w-full text-lg px-4 py-4 border-brand-primary brand-primary hover:brand-bg-primary transform hover:scale-105 transition-all duration-200"
+                      className="w-full text-lg px-4 py-4 border-brand-primary brand-primary bg-gray-100 hover:bg-white transform hover:scale-105 transition-all duration-200"
                     >
                       <span className="flex items-center justify-center">
                         <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -425,6 +437,16 @@ export default function HomePage() {
               {/* Testimonial Carousel */}
               <div className="text-center lg:text-left">
                 <div className="relative min-h-32 overflow-hidden">
+                  {/* Expand Icon */}
+                  <button
+                    onClick={() => handleTestimonialClick(currentTestimonial)}
+                    className="opacity-90 absolute top-2 right-2 z-10 bg-white rounded-full p-2 shadow-md hover:shadow-lg transition-shadow duration-200 group"
+                    aria-label="Read full testimonial"
+                  >
+                    <svg className="w-4 h-4 text-gray-600 group-hover:text-brand-primary transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                    </svg>
+                  </button>
                   <div 
                     className="flex transition-transform duration-500 ease-in-out"
                     style={{ 
@@ -434,10 +456,18 @@ export default function HomePage() {
                   >
                     {testimonials.map((testimonial, index) => (
                       <div key={index} className="w-full flex-shrink-0 min-h-32 flex flex-col justify-start">
-                        <blockquote className="text-2xl sm:text-3xl font-medium text-gray-900 mb-4">
-                          "{testimonial.quote}"
+                        <blockquote 
+                          className="text-2xl sm:text-3xl font-medium text-gray-900 mb-4 cursor-pointer hover:text-brand-primary transition-colors duration-200"
+                          onClick={() => handleTestimonialClick(index)}
+                        >
+                          "{truncateText(testimonial.quote, 50)}"
                         </blockquote>
                         <cite className="text-lg text-gray-600">— {testimonial.author}</cite>
+                        {testimonial.quote.length > 50 && (
+                          <p className="text-sm text-brand-primary mt-2 cursor-pointer hover:underline" onClick={() => handleTestimonialClick(index)}>
+                            Click to read full testimonial
+                          </p>
+                        )}
                       </div>
                     ))}
                   </div>
@@ -495,6 +525,33 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Testimonial Modal */}
+      {testimonialModalOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4"
+          onClick={() => setTestimonialModalOpen(false)}
+        >
+          <div className="relative bg-white p-8 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-auto">
+            <button
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10 bg-white rounded-full p-2 shadow-md"
+              onClick={() => setTestimonialModalOpen(false)}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <div className="text-center">
+              <blockquote className="text-2xl sm:text-3xl font-medium text-gray-900 mb-6 leading-relaxed">
+                "{testimonials[selectedTestimonial]?.quote}"
+              </blockquote>
+              <cite className="text-lg text-gray-600 font-medium">
+                — {testimonials[selectedTestimonial]?.author}
+              </cite>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 } 
