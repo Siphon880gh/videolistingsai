@@ -1,10 +1,24 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMobileMenuOpen])
 
   return (
     <>
@@ -52,15 +66,22 @@ export default function Header() {
                 {/* Dropdown Panel */}
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="py-2">
-                    <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100">
+                    {/* <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100">
                       DIY Plans
-                    </div>
+                    </div> */}
                     <Link href="/pricing" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand-primary transition-colors">
                       Pricing Plans
                     </Link>
-                    <Link href="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand-primary transition-colors">
+                    {/* <Link href="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand-primary transition-colors">
                       App Login
-                    </Link>
+                    </Link> */}
+                    <a 
+                      href="https://app.videolistings.ai" 
+                      target="_blank"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand-primary transition-colors"
+                    >
+                      App Login
+                    </a>
                   </div>
                 </div>
               </div>
@@ -88,7 +109,7 @@ export default function Header() {
       </header>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border-b transition-all duration-300 ${isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+      <div className={`md:hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border-b transition-all duration-300 ${isMobileMenuOpen ? 'fixed top-16 left-0 right-0 max-h-screen opacity-100 z-40' : 'max-h-0 opacity-0 overflow-hidden'}`}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <nav className="max-w-sm mx-auto space-y-5">
             <Link 
@@ -142,13 +163,21 @@ export default function Header() {
                 >
                   Pricing Plans
                 </Link>
-                <Link 
+                {/* <Link 
                   href="/login" 
                   className="block text-center text-lg font-medium brand-text hover:brand-primary transition-colors py-2 px-4 rounded-lg hover:bg-white/50"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   App Login
-                </Link>
+                </Link> */}
+                <a 
+                  href="https://app.videolistings.ai" 
+                  target="_blank"
+                  className="block text-center text-lg font-medium brand-text hover:brand-primary transition-colors py-2 px-4 rounded-lg hover:bg-white/50"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  App Login
+                </a>
               </div>
             </div>
           </nav>

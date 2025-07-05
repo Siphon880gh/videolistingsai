@@ -5,6 +5,7 @@ import Image from "next/image"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { CTAButtons } from "@/components/CTAButtons"
 
 export default function HowItWorksPage() {
   const [premiumVideoPlaying, setPremiumVideoPlaying] = useState(false)
@@ -173,12 +174,12 @@ export default function HowItWorksPage() {
 
                 {/* Action Buttons */}
                 <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3">
-                  <Link href="/quote">
+                  <Link href="/contact">
                     <Button size="lg" variant="outline">
                         Talk to Sales
                     </Button>
                   </Link>
-                  <Link href="/contact">
+                  <Link href="/quote">
                     <Button size="lg" variant="default">
                       Get a Quote
                     </Button>
@@ -324,18 +325,9 @@ export default function HowItWorksPage() {
             <p className="text-lg mb-8 opacity-90">
               Choose your path: try our budget-friendly DIY presentation video or get a custom premium 3D video.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/pricing">
-                <Button size="lg" variant="secondary" className="w-full sm:w-auto">
-                  Unsure? Try DIY Free Trial (non-3D)
-                </Button>
-              </Link>
-                             <Link href="/quote">
-                 <Button size="lg" className="w-full sm:w-auto bg-white text-primary font-bold hover:bg-white/90 hover:text-primary border-2 border-white shadow-lg">
-                   Get Premium 3D - Get Quote
-                 </Button>
-               </Link>
-            </div>
+            <CTAButtons 
+              showDivider={false}
+            />
           </div>
         </div>
       </section>

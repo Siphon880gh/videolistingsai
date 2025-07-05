@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { CTAButtons } from "@/components/CTAButtons"
 
 export default function PricingPage() {
   const [imageModalOpen, setImageModalOpen] = useState(false)
@@ -74,6 +75,12 @@ export default function PricingPage() {
                     <svg className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
+                    End Card
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
                     3 projects per month (videos will delete after a month)
                   </li>
                   <li className="flex items-start">
@@ -120,6 +127,12 @@ export default function PricingPage() {
                     <svg className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
+                    End Card
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
                     Voice narration (Select voice or AI train your voice)
                   </li>
                   <li className="flex items-start">
@@ -149,13 +162,25 @@ export default function PricingPage() {
                     <svg className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
+                    All Pro features included
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
                     Smart photo order (AI)
                   </li>
                   <li className="flex items-start">
                     <svg className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    All Pro features included
+                    End Card Plus (Templates available)
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    Add Text Anywhere
                   </li>
                   <li className="flex items-start">
                     <svg className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -163,7 +188,14 @@ export default function PricingPage() {
                     </svg>
                     3 re-edits per video
                   </li>
+                  <li className="flex items-start">
+                    <svg className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    Priorty Support
+                  </li>
                 </ul>
+                <div style={{height:"12px"}}></div>
                 <Button className="w-full" variant="outline">Choose Power</Button>
               </CardContent>
             </Card>
@@ -208,7 +240,14 @@ export default function PricingPage() {
                     </svg>
                     Custom end card
                   </li>
+                  <li className="flex items-start">
+                    <svg className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    Prioty Support
+                  </li>
                 </ul>
+                <div style={{height:"33px"}}></div>
                 <Link href="/quote">
                   <Button className="w-full bg-yellow-400 text-yellow-900 hover:bg-yellow-500">
                     Get Quote
@@ -225,7 +264,7 @@ export default function PricingPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-              Try DIY Free
+              Do-It-Yourself Free
             </h2>
             <p className="text-lg text-gray-600 mb-8">
               No credit card. Make a video today.
@@ -294,11 +333,11 @@ export default function PricingPage() {
                 </li>
               </ul>
               
-              <Link href="/login">
+              <a href="https://app.videolistings.ai" target="_blank">
                 <Button size="lg" className="w-full">
                   Start Free Trial
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -314,18 +353,9 @@ export default function PricingPage() {
             <p className="text-lg mb-8 opacity-90">
               Choose your path: try our budget-friendly DIY tool or get a custom premium 3D video.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/pricing">
-                <Button size="lg" variant="secondary" className="w-full sm:w-auto">
-                  Unsure? Try DIY Free Trial (non-3D)
-                </Button>
-              </Link>
-              <Link href="/quote">
-                <Button size="lg" className="w-full sm:w-auto bg-white text-primary font-bold hover:bg-white/90 hover:text-primary border-2 border-white shadow-lg">
-                  Get Premium 3D - Get Quote
-                </Button>
-              </Link>
-            </div>
+            <CTAButtons 
+              showDivider={false}
+            />
           </div>
         </div>
       </section>

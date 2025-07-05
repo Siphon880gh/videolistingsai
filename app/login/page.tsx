@@ -95,7 +95,7 @@ export default function LoginPage() {
               </div>
 
               <div className="mt-6">
-                <Link href="/pricing">
+                <Link href="https://app.videolistings.ai">
                   <Button variant="outline" size="lg" className="w-full">
                     Start Free Trial
                   </Button>

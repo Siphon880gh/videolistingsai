@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { CTAButtons } from "@/components/CTAButtons"
 
 export const metadata: Metadata = {
   title: "FAQ | VideoListings.ai",
@@ -152,18 +153,12 @@ export default function FAQPage() {
             <p className="text-lg mb-8 opacity-90">
               Choose your path: try our budget-friendly DIY tool or get a custom premium 3D video.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/pricing">
-                <Button size="lg" variant="secondary" className="w-full sm:w-auto">
-                  Unsure? Try DIY Free Trial (non-3D)
-                </Button>
-              </Link>
-                             <Link href="/quote">
-                 <Button size="lg" className="w-full sm:w-auto bg-white text-primary font-bold hover:bg-white/90 hover:text-primary border-2 border-white shadow-lg">
-                   Get Premium 3D - Get Quote
-                 </Button>
-               </Link>
-            </div>
+            <CTAButtons 
+              primaryText="Done for you 3D Video"
+              secondaryText="Try DIY Free Trial"
+              variant="page"
+              showDivider={false}
+            />
           </div>
         </div>
       </section>

@@ -65,7 +65,7 @@ export default function QuotePage() {
               <CardHeader>
                 <CardTitle className="text-2xl">Project Details</CardTitle>
                 <CardDescription>
-                  Tell us about your property and video requirements. We'll get back with a custom quote within 3-16 hours.
+                  Tell us about your property and video requirements. We'll get back with a custom quote within 4-8 hours.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -311,7 +311,7 @@ export default function QuotePage() {
                   </Button>
                   
                   <p className="text-sm text-gray-600 text-center">
-                    * We'll respond with your custom quote within 3-16 hours
+                    * We'll respond with your custom quote within 4-8 hours
                   </p>
                 </form>
               </CardContent>
@@ -422,7 +422,7 @@ export default function QuotePage() {
                     </div>
                     <div>
                       <h3 className="font-medium text-gray-900">Response Time</h3>
-                      <p className="text-sm text-gray-600">Custom quotes within 3-16 hours</p>
+                      <p className="text-sm text-gray-600">Custom quotes within 4-8 hours</p>
                     </div>
                   </div>
                 </CardContent>

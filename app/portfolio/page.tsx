@@ -1,11 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { CTAButtons } from "@/components/CTAButtons"
 
 // Note: Metadata export removed since this is now a client component
 // export const metadata: Metadata = {
@@ -104,6 +105,14 @@ const portfolioVideos = [
 export default function PortfolioPage() {
   const [show3DVideos, setShow3DVideos] = useState(true)
   const [showBudgetVideos, setShowBudgetVideos] = useState(true)
+  const ctaSectionRef = useRef<HTMLElement>(null)
+
+  const scrollToCTA = () => {
+    ctaSectionRef.current?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
 
   const filteredVideos = portfolioVideos.filter(video => {
     if (video.category === "3d" && !show3DVideos) return false
@@ -347,7 +356,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary text-primary-foreground">
+      <section ref={ctaSectionRef} className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
@@ -356,21 +365,26 @@ export default function PortfolioPage() {
             <p className="text-lg mb-8 opacity-90">
               Choose your path: try our budget-friendly DIY tool or get a custom premium 3D video.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/pricing">
-                <Button size="lg" variant="secondary" className="w-full sm:w-auto">
-                  Unsure? Try DIY Free Trial (non-3D)
-                </Button>
-              </Link>
-                             <Link href="/quote">
-                 <Button size="lg" className="w-full sm:w-auto bg-white text-primary font-bold hover:bg-white/90 hover:text-primary border-2 border-white shadow-lg">
-                   Get Premium 3D - Get Quote
-                 </Button>
-               </Link>
-            </div>
+            <CTAButtons
+              showDivider={false}
+            />
           </div>
         </div>
       </section>
+
+      {/* Floating CTA Button */}
+      <button
+        onClick={scrollToCTA}
+        className="fixed bottom-6 right-6 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 z-50 font-semibold text-sm hover:scale-105"
+        aria-label="Get a video now"
+      >
+        <span className="flex items-center space-x-2">
+          <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+          </svg>
+          <span>Get Video Now!</span>
+        </span>
+      </button>
     </div>
   )
 } 
