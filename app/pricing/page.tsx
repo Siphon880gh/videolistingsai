@@ -259,6 +259,7 @@ export default function PricingPage() {
         </div>
       </section>
 
+
       {/* Free Trial Section */}
       <section id="diy" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -342,6 +343,90 @@ export default function PricingPage() {
           </div>
         </div>
       </section>
+
+
+      {/* Prefer We Do It For You Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-4xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+              Prefer We Do It For You?
+            </h2>
+            <p className="text-lg text-gray-600 mb-12">
+              Our expert team creates stunning 3D videos with cinematic depth effects and artistic touches that make your listings unforgettable.
+            </p>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Features */}
+              <div className="text-left">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Premium 3D Video Features</h3>
+                <ul className="space-y-4">
+                  <li className="flex items-start">
+                    <svg className="h-6 w-6 text-primary mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <div>
+                      <strong className="font-semibold">3D Motion with Parallax Depth Effects</strong>
+                      <p className="text-gray-600 mt-1">Creates stunning cinematic movement that brings your photos to life</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="h-6 w-6 text-primary mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <div>
+                      <strong className="font-semibold">Artistic Touches</strong>
+                      <p className="text-gray-600 mt-1">Simulated leaves blowing, pool ripples, and other subtle animations</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="h-6 w-6 text-primary mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <div>
+                      <strong className="font-semibold">Expert Team Production</strong>
+                      <p className="text-gray-600 mt-1">Professional video editors with an eye for aesthetic appeal</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="h-6 w-6 text-primary mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <div>
+                      <strong className="font-semibold">Custom End Cards & Branding</strong>
+                      <p className="text-gray-600 mt-1">Tailored to your brand and listing requirements</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+                             {/* Video Preview */}
+               <div className="bg-gray-50 rounded-2xl p-8">
+                 <h3 className="text-xl font-bold text-gray-900 mb-4">See an Example</h3>
+                 <div className="aspect-video rounded-lg mb-6 overflow-hidden">
+                   <video
+                     className="w-full h-full object-cover"
+                     controls
+                     preload="metadata"
+                     poster="/videos/3d-premium-demo.mp4"
+                   >
+                     <source src="/videos/3d-premium-demo.mp4" type="video/mp4" />
+                     Your browser does not support the video tag.
+                   </video>
+                 </div>
+                <p className="text-gray-600 mb-6">
+                  Experience the cinematic quality that sets your listings apart from the competition.
+                </p>
+                <Link href="/quote">
+                  <Button size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                    Get Your Quote
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>      
 
       {/* Premium Anchor */}
       <section id="premium" className="py-16 bg-primary text-primary-foreground">
